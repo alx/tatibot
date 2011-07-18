@@ -4,7 +4,7 @@ require 'bundler/setup'
 require 'daemons'
 
 Daemons.run(
-  File.join(File.dirname(__FILE__), 'bot.rb'),
+  File.join(File.dirname(__FILE__), 'tatibot.rb'),
   {
     :backtrace  => true,
     :log_output => true,

@@ -1,4 +1,4 @@
-check process tatibot with pidfile /path/tatibot/current/bot.rb.pid
+check process tatibot with pidfile /path/tatibot/current/tatibot.rb.pid
   start program = "/bin/bash /path/tatibot/current/monit_bot.sh start"
     as uid user and gid group
   stop program = "/bin/bash /path/tatibot/current/monit_bot.sh stop"
