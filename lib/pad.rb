@@ -3,7 +3,8 @@ class Pad
 
   property :id,          Serial
   property :name,        String
-  property :description, DateTime
+  property :description, String
+  property :created_at,  DateTime
 
   validates_presence_of :name
 

@@ -35,7 +35,7 @@ bot.add_command(
   :regex       => /^pads$/
 ) do |sender, message|
   output = "List of pads:\n"
-  Pad.all.each do |pad|
+  Pad.all(:order => [ :created_at.desc ]).each do |pad|
     output << "\t- " << pad.to_s << "\n"
   end
   output
