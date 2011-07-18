@@ -10,7 +10,6 @@ Daemons.run(
     :log_output => true,
     :dir_mode   => :script,
     :log_dir    => '/tmp',
-    :monitor    => true
   }
 )
 
