@@ -11,7 +11,7 @@ script_location=$(cd ${0%/*} && pwd -P)
 
 logfile=$script_location/monit_job.log
 echo "-----------------------------------------------" >> $logfile 2>&1
-echo "Running bundle exec ./bot/bot_control.rb $action" >> $logfile 2>&1
+echo "Running bundle exec ./bot_control.rb $action" >> $logfile 2>&1
 echo `date` >> $logfile 2>&1
 echo `env` >> $logfile 2>&1
 

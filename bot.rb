@@ -32,7 +32,7 @@ bot = Jabber::Bot.new({
 bot.add_command(
   :syntax      => 'pads',
   :description => 'lists existing pads',
-  :regex       => /^pads$/
+  :regex       => /^#tetalab <[^>]*> pads$/
 ) do |sender, message|
   output = "List of pads:\n"
   Pad.all(:order => [ :created_at.desc ]).each do |pad|
@@ -44,7 +44,7 @@ end
 bot.add_command(
   :syntax       => 'pad name description',
   :description  => 'create a new pad named and described',
-  :regex        => /^pad\s.*$/,
+  :regex        => /^#tetalab <[^>]*> pad\s.*$/,
   :full_message => true
 ) do |sender, message|
 
