@@ -47,15 +47,9 @@ bot.add_command(
   :regex        => /^#tetalab <[^>]*> pad\s.*$/,
   :full_message => true
 ) do |sender, message|
-
   name, description = message.match(/#tetalab <.*> pad (\w*)(.*)/).to_a
-  @pad = Pad.new(:name => name, :description => description)
-
-  if @pad.save
-    "pad created: #{@pad.to_s}"
-  else
-    "error saving pad"
-  end
+  @pad = Pad.create(:name => name, :description => description)
+  "pad created: #{@pad.to_s}"
 end # add_command
 
 bot.connect
