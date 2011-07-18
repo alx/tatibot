@@ -3,3 +3,4 @@
 .bundle/*
 log/*
 bot_config.yml
+config/deploy.rb
