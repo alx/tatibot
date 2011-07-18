@@ -16,5 +16,5 @@ echo `date` >> $logfile 2>&1
 echo `env` >> $logfile 2>&1
 
 /usr/local/bin/rvm reload >> $logfile 2>&1
-`which bundle` exec ./bot_control.rb $action >> $logfile 2>&1
+`which bundle` exec $script_location/bot_control.rb $action >> $logfile 2>&1
 
