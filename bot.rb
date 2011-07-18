@@ -48,8 +48,8 @@ bot.add_command(
   :full_message => true
 ) do |sender, message|
 
-  title, description = message.match(/#tetalab <.*> pad (\w*)(.*)/).to_a
-  @pad = Pad.new(:title => title, :description => description)
+  name, description = message.match(/#tetalab <.*> pad (\w*)(.*)/).to_a
+  @pad = Pad.new(:name => name, :description => description)
 
   if @pad.save
     "pad created: #{@pad.to_s}"
