@@ -1,0 +1,4 @@
+bot: 
+  login:    login@server_jabber.com
+  password: password
+  master:   user_controlling_bot@server_jabber.com

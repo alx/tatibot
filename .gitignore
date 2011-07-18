@@ -1,0 +1,5 @@
+*.db
+*.sqlite3
+.bundle/*
+log/*
+bot_config.yml
