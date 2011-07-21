@@ -92,9 +92,9 @@ bot.add_command(
 end # add_command
 
 bot.add_command(
-  :syntax       => '-nick',
-  :description  => 'decrement score on nick',
-  :regex        => /^#tetalab <[^>]*> -.*$/,
+  :syntax       => 'version',
+  :description  => 'show bot version',
+  :regex        => /^#tetalab <[^>]*> version$/,
   :full_message => true
 ) do |sender, message|
   return File.expand_path(File.dirname(__FILE__)).split("/").pop
