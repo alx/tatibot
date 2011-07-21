@@ -91,7 +91,14 @@ bot.add_command(
   return nil
 end # add_command
 
-
+bot.add_command(
+  :syntax       => '-nick',
+  :description  => 'decrement score on nick',
+  :regex        => /^#tetalab <[^>]*> -.*$/,
+  :full_message => true
+) do |sender, message|
+  return File.expand_path(File.dirname(__FILE__)).split("/").pop
+end # add_command
 
 
 bot.connect
