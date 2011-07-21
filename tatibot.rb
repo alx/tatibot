@@ -73,11 +73,12 @@ bot.add_command(
 ) do |sender, message|
   regexp, nickname = message.match(/#tetalab <.*> \+(.*)$/).to_a
   if @nick = NickScore.first(:nick => nickname)
-    @nick.score += 1
+    @nick[:score] += 1
   else
     @nick = NickScore.create(:nick => nickname)
   end
   @nick.save
+  return nil
 end # add_command
 
 bot.add_command(
@@ -88,11 +89,12 @@ bot.add_command(
 ) do |sender, message|
   regexp, nickname = message.match(/#tetalab <.*> \+(.*)$/).to_a
   if @nick = NickScore.first(:nick => nickname)
-    @nick.score -= 1
+    @nick[:score] = 1
   else
     @nick = NickScore.create(:nick => nickname, :score => -1)
   end
   @nick.save
+  return nil
 end # add_command
 
 
