@@ -60,7 +60,7 @@ bot.add_command(
 ) do |sender, message|
   output = "Scores:"
   NickScore.eahc do |nick|
-    output << "\n\t- #{nick.nick}: #{nick.score}"
+    output << "\n\t- #{nick[:nick]}: #{nick[:score]}"
   end
   output
 end # add_command
