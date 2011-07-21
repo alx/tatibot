@@ -59,7 +59,7 @@ bot.add_command(
   :full_message => true
 ) do |sender, message|
   output = "Scores:"
-  NickScore.all(:order => [:score.desc]).each do |nick|
+  NickScore.all(:score.gt => 0, :order => [:score.desc]).each do |nick|
     output << "\n\t- #{nick[:nick]}: #{nick[:score]}"
   end
   output
