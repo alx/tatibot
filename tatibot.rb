@@ -59,7 +59,7 @@ bot.add_command(
   :full_message => true
 ) do |sender, message|
   output = "Scores:"
-  NickScore.eahc do |nick|
+  NickScore.each do |nick|
     output << "\n\t- #{nick[:nick]}: #{nick[:score]}"
   end
   output
