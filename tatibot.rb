@@ -52,4 +52,50 @@ bot.add_command(
   "New pad: #{@pad.to_s}"
 end # add_command
 
+bot.add_command(
+  :syntax       => 'scores',
+  :description  => 'show scores on nick',
+  :regex        => /^#tetalab <[^>]*> scores$/,
+  :full_message => true
+) do |sender, message|
+  output = "Scores:"
+  NickScore.eahc do |nick|
+    output << "\n\t- #{nick.nick}: #{nick.score}"
+  end
+  output
+end # add_command
+
+bot.add_command(
+  :syntax       => '+nick',
+  :description  => 'increment score on nick',
+  :regex        => /^#tetalab <[^>]*> \+.*$/,
+  :full_message => true
+) do |sender, message|
+  regexp, nickname = message.match(/#tetalab <.*> \+(.*)$/).to_a
+  if @nick = NickScore.first(:nick => nickname)
+    @nick.score += 1
+  else
+    @nick = NickScore.create(:nick => nickname)
+  end
+  @nick.save
+end # add_command
+
+bot.add_command(
+  :syntax       => '-nick',
+  :description  => 'decrement score on nick',
+  :regex        => /^#tetalab <[^>]*> -.*$/,
+  :full_message => true
+) do |sender, message|
+  regexp, nickname = message.match(/#tetalab <.*> \+(.*)$/).to_a
+  if @nick = NickScore.first(:nick => nickname)
+    @nick.score -= 1
+  else
+    @nick = NickScore.create(:nick => nickname, :score => -1)
+  end
+  @nick.save
+end # add_command
+
+
+
+
 bot.connect
