@@ -59,7 +59,7 @@ bot.add_command(
   :full_message => true
 ) do |sender, message|
   output = "Scores:"
-  NickScore.each do |nick|
+  NickScore.all(:order => [:score.desc]).each do |nick|
     output << "\n\t- #{nick[:nick]}: #{nick[:score]}"
   end
   output
@@ -72,12 +72,11 @@ bot.add_command(
   :full_message => true
 ) do |sender, message|
   regexp, nickname = message.match(/#tetalab <.*> \+(.*)$/).to_a
-  if @nick = NickScore.first(:nick => nickname)
-    @nick.score += 1
+  if nick = NickScore.first(:nick => nickname)
+    nick.update :score => (nick[:score] + 1)
   else
-    @nick = NickScore.create(:nick => nickname)
+    NickScore.create(:nick => nickname)
   end
-  @nick.save
   return nil
 end # add_command
 
@@ -88,12 +87,11 @@ bot.add_command(
   :full_message => true
 ) do |sender, message|
   regexp, nickname = message.match(/#tetalab <.*> -(.*)$/).to_a
-  if @nick = NickScore.first(:nick => nickname)
-    @nick.score -= 1
+  if nick = NickScore.first(:nick => nickname)
+    nick.update :score => (nick[:score] - 1)
   else
-    @nick = NickScore.create(:nick => nickname, :score => -1)
+    NickScore.create(:nick => nickname, :score => -1)
   end
-  @nick.save
   return nil
 end # add_command
 
