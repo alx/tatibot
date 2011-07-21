@@ -75,7 +75,7 @@ bot.add_command(
   nick = NickScore.first_or_create(:nick => nickname)
   nick.increment
   nick.save
-  return nil
+  nil
 end # add_command
 
 bot.add_command(
@@ -88,7 +88,7 @@ bot.add_command(
   nick = NickScore.first_or_create(:nick => nickname)
   nick.decrement
   nick.save
-  return nil
+  nil
 end # add_command
 
 bot.add_command(
@@ -97,7 +97,7 @@ bot.add_command(
   :regex        => /^#tetalab <[^>]*> version$/,
   :full_message => true
 ) do |sender, message|
-  return File.expand_path(File.dirname(__FILE__)).split("/").pop
+  File.expand_path(File.dirname(__FILE__)).split("/").pop
 end # add_command
 
 
