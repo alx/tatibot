@@ -4,3 +4,5 @@
 log/*
 bot_config.yml
 config/deploy.rb
+tatibot.pid
+tatibot.log
