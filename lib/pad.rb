@@ -9,7 +9,9 @@ class Pad
   validates_presence_of :name
 
   def to_s
-    output = "http://tetalab.org:9000/#{name}"
+    #pad_url = "tetalab.org:9000"
+    pad_url = "pad.tetalab.org/p"
+    output = "http://#{pad_url}/#{name}"
     if description
       output << " - " << description
     end
